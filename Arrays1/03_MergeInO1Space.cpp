@@ -18,38 +18,47 @@ void MERGE (int a[], int n, int b[], int m) {
     // either j < n
     // or j >= n
 
-    // we can take a boolean to check it,
-    // as if j >= n then (only) first
-    // array is not considered.
+    // if j < n, then
+    // we consider a[i] and a[j]
 
-    bool flag = false;
-
-    if (j < n) {
-      flag = true;
-      while (j < n) {
-        if (a[i] > a[j]) {
-          swap(a[i], a[j]);
-        }
-        j++;
-        i++;
+    while (j < n) {
+      if (a[i] > a[j]) {
+        swap(a[i], a[j]);
       }
+      j++;
+      i++;
     }
 
-    // at this point, if the upper
-    // block were executed then
-    // j == n but i < n
-    // so, we make j = 0 to check
-    // in the second array
+    // now, if the upper block
+    // were executed, then j == n
+    // so, we can do j = j-n to
+    // make j = 0
+    // then, j will be for
+    // considering b[] elements
 
-    // otherwise, j = j-n
-    // because j = i + gap and j >= n
-    // so the first array
-    // is never considered for both i and j
-    // that is, a[i] and a[j]
-    // is not considered.
+    // it may be the case where,
+    // upper block is not executed
+    // when j >= n
 
-    if (flag) j = 0;
-    else j = j-n;
+    // for example
+    // let a[] = [1, 2, 3]
+    // let b[] = [4, 5, 6, 7, 8, 9, 10, 11]
+
+    // let an arbitrary gap be >= n
+    // gap = 5
+    // so, i = 0, j = 5
+
+    // so we do j-n to
+    // to make j index
+    // for comparing b[] array
+
+    // j = j-n = 5-3 = 2
+
+    //  0  1  2   0  1  2  3  4  5  6   7
+    //  i ----<gap>---- j
+    // [1, 2, 3] [4, 5, 6, 7, 8, 9, 10, 11]
+
+    j = j-n;
 
     // now, it is where
     // i < n and j < m
