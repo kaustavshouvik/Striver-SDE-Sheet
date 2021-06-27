@@ -7,7 +7,8 @@
 | [Sort an arrray of 0s, 1s and 2s](#1-sort-an-array-of-0s-1s-and-2s)   |
 | [Find repeat and missing number](#2-find-missing-and-repeat-number)   |
 | [Merge without extra space](#3-merge-without-extra-space)             |
-| [Kadane's Algorithm](#4-kadanes-algorithm) |
+| [Kadane's Algorithm](#4-kadanes-algorithm)                            |
+| [Merge overlapping intervals](#5-merge-overlapping-intervals)         |
 
 ### 1. Sort an array of 0s, 1s and 2s.
 - Basic idea is to take 3 indices: **lo** = **0**, **mid** = **0** and **hi** = **n-1**.
@@ -49,7 +50,17 @@
   - Both i and j belong to array 2.
 
 ### 4. Kadane's Algorithm
-- Finding the maximum sum array.
+- Finding the maximum sum sub-array.
 - Basic idea is to keep summing the array elements till and taking the maximum among them and whenever the sum becomes negative we make it 0.
-- Lets say at an index i the sum is negative, it means that the result upto i is **not any good** because even if there are positive elements after i the total sum will still be less than if we would've considered **only** the next element. If the next elements were negative, adding it to a negative sum will give more negative result. Hence, we make the sum as 0.
+- Lets say at an index i the sum is negative, it means that the result upto i is **not any good** because even if there is a positive element after i the total sum will still be less than if we would've considered **only** the next element. If the next element is negative (or 0), adding it to a negative sum will give more negative result. Hence, we make the sum as 0.
 - We initialize the result as a minimum value because if **all the numbers were negative**, then the result would be the **least negative** value which is how the algorithm is designed to produce.
+
+### 5. Merge overlapping intervals
+- Make sure to **sort** the intervals.
+- The basic idea is to compare the **end** of the last interval in result to the **start** of the ith interval. 
+- Push the first interval into result.
+- Now, for the next intervals there are few cases:
+![](/Arrays1/merge-intervals.png)
+- In the first case, you **skip** the interval as it completely lies inside.
+- In the second case, you change the **end** of the last interval in result to the **end** of the current interval.
+- In the third case, you push the **current** interval in the result.
