@@ -5,7 +5,7 @@
 | Arrays (Day 1)                                                        | Arrays (Day 2)  |
 | --------------------------------------------------------------------- | --------------- |
 | [Sort an arrray of 0s, 1s and 2s](#1-sort-an-array-of-0s-1s-and-2s)   | [Set matrix zeroes](#7-set-matrix-zeroes) |
-| [Find repeat and missing number](#2-find-missing-and-repeat-number)   |
+| [Find repeat and missing number](#2-find-missing-and-repeat-number)   | [Pascal's Triangle](#8-pascals-triangle)  |
 | [Merge without extra space](#3-merge-without-extra-space)             |
 | [Kadane's algorithm](#4-kadanes-algorithm)                            |
 | [Merge overlapping intervals](#5-merge-overlapping-intervals)         |
@@ -74,9 +74,17 @@
 - Basic idea is to traverse the whole matrix and lets say the a[i][j] is 0:
   - We keep track of row i by marking the a[0][i] as 0.
   - We keep track of column j by marking the a[i][0] as 0.
+
 ![](/Arrays2/set-matrix-zeroes.png)
 - Now, there is an edge case (this edge case can be vice-versa):
   - Suppose there is a 0 in the first row but there are no 0s in the first column.
   - In this case we would mark a[0][0] as 0 which in turn would mark the entire first column as 0 which is wrong.
   - To prevent that, we would only use a[0][0] to mark for the first row and we keep another boolean variable to mark if there are any zeroes in the first column.
 - Then, we traverse from the end and we mark an element a[i][j] as 0 if a[0][j] == 0 or a[i][0] is 0 and we carefully mark the 0th column only if the boolean is false.
+
+### 8. Pascal's Triangle.
+- 3 types of questions:
+  - Given n, print first n rows.
+  - Given n and i, print the ith elment in nth row.
+  - Given n, print the nth row.
+- Refer to code :).
