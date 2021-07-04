@@ -6,7 +6,7 @@
 | --------------------------------------------------------------------- | --------------- |
 | [Sort an arrray of 0s, 1s and 2s](#1-sort-an-array-of-0s-1s-and-2s)   | [Set matrix zeroes](#7-set-matrix-zeroes) |
 | [Find repeat and missing number](#2-find-missing-and-repeat-number)   | [Pascal's Triangle](#8-pascals-triangle)  |
-| [Merge without extra space](#3-merge-without-extra-space)             |
+| [Merge without extra space](#3-merge-without-extra-space)             | [Next Permutation](#9-next-permutation) |
 | [Kadane's algorithm](#4-kadanes-algorithm)                            |
 | [Merge overlapping intervals](#5-merge-overlapping-intervals)         |
 | [Find duplicates in array of n+1 elements](#6-find-duplicates-in-array-of-n1-elements)         |
@@ -88,3 +88,19 @@
   - Given n and i, print the ith elment in nth row.
   - Given n, print the nth row.
 - Refer to code :).
+
+### 9. Next Permutation.
+- The task here is to get a sequence which is greater than the current sequence.
+- The greater sequence should be as minimum as possible.
+- 1 3 5 4 2 => 1 4 2 3 5
+- 4 3 2 1 5 => 4 3 2 5 1
+- 5 1 3 4 2 => 5 1 4 2 3
+- To find that, we first need some position 'i' such that changing that will give the next permutation.
+- To find that position, we have to traverse from the back because we need the **just** greater sequence than the current sequence.
+- So if a[i] > a[i+1], putting a[i+1] in a[i]th place won't do any good because we will get a lesser sequence.
+- We want to change the ith position where a[i] < a[i+1]
+  - 1 **3(i)** 5 4 2
+- Now, we wanna change it something which is **just bigger** than this, to find that we can traverse from back again and we stop traversing when we find an a[j] > a[i] and swap(a[i], a[j]).
+  - 1 **3(i)** 5 **4(j)** 2 => 1 **4(i)** 5 **3(j)** 2
+- Now, we see that the part **[i+1, n]** is in descending order but we want a sequence which is as smaller in lexicoghraphical order as possible so we **reverse** them.
+  - 1 4 2 3 5
